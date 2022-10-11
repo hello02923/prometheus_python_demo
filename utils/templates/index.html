@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+
+  <!-- ✅ Load CSS file for DataTables  -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css"
+    integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+
+    <!-- ✅ load jQuery ✅ -->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+    ></script>
+
+    <!-- ✅ load DataTables ✅ -->
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+    integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    ></script>
+
+</head>
+<body>
+  <table id="tableObj" class="display" style="width:100%"></table>
+
+<script type="text/javascript">
+    $(document).ready( function () {
+    $.ajax({
+        url: '/pageList',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json;',
+        success: function(data) {
+            $('#tableObj').DataTable({
+                "data": data.Result,
+                "columns": [ 
+                    //列的標題一般是從DOM中讀取
+                    //也可以使用這個屬性為表格創建列標題
+                    { data: 'Id', title: "商品編號" },
+                    { data: 'name', title: "商品名稱" },
+                    { data: 'channel', title: "通路別" }
+                ]
+            })
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('Error: ' + textStatus + ' - ' + errorThrown);
+        }
+    });
+    
+});
+</script>
+</body>
+</html>

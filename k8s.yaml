@@ -1,0 +1,35 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus_python_demo_service
+spec:
+  selector:
+    app: prometheus_python_demo
+  ports:
+  - protocol: "TCP"
+    port: 8001
+    targetPort: 8001
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus_python_demo
+spec:
+  selector:
+    matchLabels:
+      app: prometheus_python_demo
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: prometheus_python_demo
+    spec:
+      containers:
+      - name: prometheus_python_demo
+        image: prometheus_python_demo:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8001

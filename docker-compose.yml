@@ -1,0 +1,17 @@
+version: '3'
+services:
+  prometheus_python_demo:
+    restart: always
+    build: ./
+    image: prometheus_python_demo
+    container_name: prometheus_python_demo
+    ports:
+      - "8001:8001"
+    volumes:  # connect at local file HOST:CONTAINER
+      - ./:/prometheus_python_demo
+
+# connect network on api-cluster
+networks:
+  default: 
+    external:
+      name: prometheus_monitoring

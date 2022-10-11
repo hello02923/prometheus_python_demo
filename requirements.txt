@@ -1,0 +1,8 @@
+pymongo
+pandas
+fastapi
+uvicorn
+Jinja2
+prometheus_client
+Werkzeug
+prometheus-fastapi-instrumentator
