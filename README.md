@@ -16,6 +16,6 @@
 
 - 想要了解prometheus的話，可以參考
     - [[Day27] 簡單搞懂 Prometheus 是什麼？](https://ithelp.ithome.com.tw/articles/10307286)
-    - []()
-    - []()
+    - [[Day28] 簡單搞懂Prometheus Docker實作範例](https://ithelp.ithome.com.tw/articles/10307312)
+    - [[Day29] 簡單搞懂Promethues Python FastAPI 實作範例](https://ithelp.ithome.com.tw/articles/10307315)
 
